@@ -1,0 +1,94 @@
+<div class="begin-page" [@routerTransition]>
+    <section class="beginPadre">
+      <div class="form-content" align="center">
+        <div>
+          <img class="logo-zipp2" src="assets/images/logo-zipp2.png" style="zoom: 0.42;" alt="..."> 
+        </div>
+	      <div style="width: 100%;">
+          <h3>Bienvenidos a nuestra comunidad ZIPP</h3>
+            <p>Inscríbe aquí tu zona de permitido parqueo. ¡Únete!</p>
+            <p> ¡BUSCAMOS ZONAS ZIPP, COMUNÍCATE!</p>
+        </div>
+        
+        <div class="alert alert-success" *ngIf="status == 'success'">
+          Login correcto!!
+        </div>
+        <div class="alert alert-danger" *ngIf="status == 'error'">
+          Documento de identidad o contraseña invalida.
+        </div>
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit()" align="center">
+          <div class="form-content">
+          
+          <!-- Usuario Login -->
+          <div class="form-group" align="center">
+              <p> INICIO SESION</p>
+            <input type="text" class="form-control input-underline input-lg" style="width: 280px;" name="cedula" #cedula="ngModel" [(ngModel)]="user.cedula" maxlength="10" onkeypress="return justNumbers(event);" placeholder="Documento de identidad"  required />
+            <label for="pass" class="animated-label">Usuario</label>
+            <span *ngIf="!cedula.valid && cedula.touched" class="label label-danger">
+              El documento de identidad es obligatorio
+            </span>
+          </div>
+          <!-- Pass Login -->
+          <div class="form-group" align="center">
+            <input type="{{type}}" class="form-control input-underline input-lg" style="width: 280px;" name="password" #password="ngModel" [(ngModel)]="user.password" placeholder="Contraseña" required />
+            <span class="input-group-addon" id="sizing-addon1" style="width: 70px;"(click)="toggleShow()">
+              <a style="color: white;" *ngIf="type == 'password'">Mostrar Contraseña</a>   
+              <a style="color: white;" *ngIf="type == 'text'">Ocultar Contraseña</a>     
+            </span> 
+            <span *ngIf="!password.valid && password.touched" class="label label-danger">
+                El contraseña es obligatoria
+              </span>
+          </div>
+        </div>
+        <input type="submit" value="Entrar" class="btn rounded-btn" [disabled]="!loginForm.form.valid"/>
+        
+        <p>No tienes cuenta? Crea una, tomará pocos minutos.</p>
+          <div class="form-group">
+            <a class="btn intro-1" style="color: firebrick" [routerLink]="['/forget']"><u>OLVIDE MI CONTRASEÑA</u></a>
+            <a class="btn intro-1" style="color: firebrick" [routerLink]="['/register']"><u>CREAR CUENTA</u></a>                
+          </div>  
+  
+                  <!-- Botón registrar Login 
+                  <input type="button" value="Registro" class="btn rounded-btn" [routerLink]="['/register']" name="" /> -->
+        </form>
+
+        
+     </div>
+    </section>
+    <section style="width: 100%; align-content: center; background-color: #95ae00">
+        <a href="https://www.facebook.com/zippoficial">
+          <img  src="assets/images/fb.png" 
+                style="height: 50px;
+                       padding-left: 10px;
+                       padding-right: 10px"> 
+        </a>
+        <a href="https://www.instagram.com/zippoficial">
+          <img  src="assets/images/instagram.png" 
+                style="height: 50px;
+                       padding-left: 10px;
+                       padding-right: 10px" >
+        </a>
+        <a href="tel:+573052902853">
+          <img  src="assets/images/wzp.png" 
+                style="height: 50px;
+                       padding-left: 10px;
+                       padding-right: 10px">
+        </a>
+    </section> 
+  <section style="width: 100%; align-content: center; background-color: white">
+    <img src="assets/images/fonemp.png" 
+         style="height: 40px"> 
+    <img src="assets/images/finade.png" 
+         style="height: 40px" >
+      
+    <img src="assets/images/sena.png" 
+         style="height: 40px">
+    <img src="assets/images/colombia.png" 
+         style="height: 40px">   
+  </section>  
+    
+        
+    
+  
+</div>
+

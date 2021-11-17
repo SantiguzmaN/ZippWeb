@@ -1,0 +1,98 @@
+<section class="hola">
+<div class="row-lg-12">
+    <h3>{{title}}</h3>
+    <hr>
+    <section>
+    <table class="table table-hover" style="size:unset">
+        <thead class="thead-default">
+            <tr>
+                <th>Ciudad</th>
+                <th>Direccion</th>
+                <th>Espacios</th>
+                <th>Valor</th>
+                <th>Horario</th>               
+                <th>Opciones</th>  
+                <th>Activar/Desactivar</th>               
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let zonazipp of zonaszipp">
+                <td>{{zonazipp.city}}</td>
+                <td>{{zonazipp.address}}</td>
+                <td>{{zonazipp.number_spaces}}</td>
+                <td>{{zonazipp.price}}</td>
+                <td>{{zonazipp.horary}}</td>
+                <td>
+                    <a [routerLink]="['/admin-panel/zonazipp-detail', zonazipp._id]" class="btn btn-sm btn-success" title="Ver" style="height: 30px; width:80px">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                        Ver
+                    </a>
+                    <a [routerLink]="['/admin-panel/admin-zonas-zipp/edit', zonazipp._id]" class="btn btn-sm btn-primary" title="Editar" style="height: 30px; width:80px">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        Editar
+                    </a>
+                    <a href="#myModal-{{zonazipp._id}}" role="button" data-toggle="modal" class="btn btn-sm btn-danger" title="Borrar" style="height: 30px; width:80px">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        Borrar
+                    </a>
+                    
+                    <!-- Modal HTML -->
+                    <div id="myModal-{{zonazipp._id}}" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">Confirmación</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>¿Estás seguro que deseas eliminar la zona ZIPP ubicada en la ciudad de <strong>{{zonazipp.city}}</strong>, con dirección <strong>{{zonazipp.address}}</strong>?</p>
+                                    <p class="text-warning"><small>Si borras la zona ZIPP seleccionada, te perderás de continuar disfrutando de los beneficios de trabajar en una economía colaborativa</small></p>
+                                    <!-- <p class="text-warning"><small>{{zonazipp._id}}</small></p> -->
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary-modal" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-danger" (click)="deleteZonaZipp(zonazipp._id)">Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <!--<mat-slide-toggle
+                        [(ngModel)]="checked"
+                        class="example-margin"
+                        [color]="#color"
+                        (change)="changed()">
+                            {{checked}}
+                    </mat-slide-toggle>-->
+                    <a role="button" 
+                       data-toggle="modal" 
+                       *ngIf="zonazipp.estado_zonazipp ==true" 
+                       class="btn btn-sm btn-danger" 
+                       title="Desactivar" 
+                       (click)="getAndUpdate(zonazipp._id)"
+                       style="height: 30px; width:100px">
+                       
+                        Desactivar
+                    </a>
+
+                    <a role="button" 
+                       data-toggle="modal" 
+                       *ngIf="zonazipp.estado_zonazipp == false" 
+                       class="btn btn-sm btn-success" 
+                       title="Activar" 
+                       (click)="getAndUpdate(zonazipp._id)"
+                       style="height: 30px; width:100px">
+                        Activar
+                    </a>
+
+                </td>
+
+
+            </tr>
+        </tbody>
+    </table>
+</section>
+</div>
+</section>
+

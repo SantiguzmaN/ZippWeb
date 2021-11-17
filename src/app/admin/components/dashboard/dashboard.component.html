@@ -1,0 +1,121 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <span class="decor"></span>
+  <div class="container-fluid">
+
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" 
+            data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	    <div class="navbar-header">
+			<a [routerLink]="['./home']" class="navbar-brand">
+				<img src="assets/images/logo-zipp.png" class="logo-dash" />
+			</a>
+		</div>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+    	<ul class="nav navbar-nav">
+			<li>
+				<a [routerLink]="['./home']" [routerLinkActive]="['active']">
+					<i class="fa fa-home" aria-hidden="true"></i>
+					Inicio
+				</a>
+			</li>
+
+			<li>
+				<a [routerLink]="['zona-zipp']" [routerLinkActive]="['active']">
+					<i class="fa fa-map-marker" aria-hidden="true"></i>
+					Zonas Zipp
+				</a>
+			</li>
+
+			<li>
+				<a [routerLink]="['ganancias']" [routerLinkActive]="['active']">
+					<i class="fa fa-line-chart" aria-hidden="true"></i>
+					Ganancias
+				</a>
+			</li>
+
+			<li>
+				<a [routerLink]="['calificaciones']" [routerLinkActive]="['active']">
+					<i class="fa fa-history" aria-hidden="true"></i>
+					Historial
+				</a>
+			</li>
+
+			<li>
+				<a [routerLink]="['compras']" [routerLinkActive]="['active']">
+					<i class="fa fa-money" aria-hidden="true"></i>
+					Compras
+				</a>
+			</li>
+
+		</ul>
+
+		<ul class="nav navbar-nav navbar-right" *ngIf="identity">
+			<li class="avatar">
+				<img src="{{ url + 'get-image-file/' + identity.image}}" />
+			</li>
+
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+					{{identity.name}} <span class="caret"></span>
+				</a>
+
+				<ul class="dropdown-menu">
+					<li>
+						<a [routerLink]="['datos-user']">
+							<i class="fa fa-user" aria-hidden="true"></i>
+							Mi perfil
+						</a>
+					</li>
+
+					<li>
+						<a [routerLink]="['admin-zonas-zipp/list']" close-menu>
+							<i class="fa fa-map" aria-hidden="true"></i>
+							Administra tus ZIPP
+						</a>
+					</li>
+
+					<li>
+						<a href="https://tinyurl.com/zonaszipp">
+							<i class="fa fa-gavel" aria-hidden="true"></i>
+							Términos y Condiciones
+						</a>
+					</li>
+
+					<li>
+						<a [routerLink]="['help-user']">
+							<i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+							Ayuda
+						</a>
+					</li>
+
+					<li>
+						<a class="pointer" (click)="logout()">
+							<i class="fa fa-sign-out" aria-hidden="true"></i>
+							Cerrar sesión
+						</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+<div class="col-lg-12">
+	<router-outlet></router-outlet>	
+</div>
+
+<app-footer></app-footer>

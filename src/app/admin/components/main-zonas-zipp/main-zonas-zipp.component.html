@@ -1,0 +1,19 @@
+<div class="row-lg-12">
+    <h3>{{title}}</h3>
+    <div class="sidebar-admin" data-example-id="sample-nav-stacked">
+        <ul class="nav nav-pills nav-stacked nav-pills-stacked-example">
+            <li role="presentation" [routerLinkActive]="['active']" class="admin-options">
+                <a [routerLink]="['list']">Tus ZIPP</a>
+            </li>
+            <li role="presentation" [routerLinkActive]="['active']" class="admin-options">
+                <a [routerLink]="['add']">Agregar ZIPP</a>
+            </li>
+            <!-- <li role="presentation" class="admin-options">
+                <a [routerLink]="['list']">Informacion</a>
+            </li> -->
+        </ul>
+    </div>
+</div>
+<div class="row-lg-12">
+    <router-outlet></router-outlet>    
+</div>

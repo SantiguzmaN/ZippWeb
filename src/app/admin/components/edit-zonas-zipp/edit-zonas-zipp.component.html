@@ -1,0 +1,238 @@
+<h3>{{title}}</h3>
+<hr>
+<div class="container col-lg-10">
+    <form #formAdd="ngForm"  >
+        
+        <!-- Campo ciudad de la zona zipp -->
+        <label>Ciudad</label>
+        <br>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-map" aria-hidden="true"></i></span>
+                <input id="city" type="text" name="city" #city="ngModel" [(ngModel)]="zonazipp.city" class="form-control input-underline-zipp" placeholder="Digite nombre de la ciudad de ZIPP" 
+                    autocorrect="off" spellcheck="off" autocapitalize="off" 
+                />
+                <span *ngIf="!city.valid && city.touched">
+                    La ciudad es requerida
+                </span>
+            </div>
+        <br>
+        
+             <!-- Campo direccion de la zona zipp -->
+             <label>Dirección</label>
+             <br>
+             <label style="font-size: 80%; color: dimgray">(en el campo escriba su direccion tal cual aparece en su factura, posteriormente en el mapa, ubique el pin en el punto exacto donde se encuentra su zona zipp, por ultimo presione el boton "Obtener localizacion de Zipp")</label>
+             
+     
+             <br>
+                 <div class="input-group">
+                     <span class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                     <input id="address" type="text" name="address" #address="ngModel" [(ngModel)]="zonazipp.address" class="form-control input-underline-zipp" placeholder="Digite dirección ZIPP">
+                     <span *ngIf="!address.valid && address.touched">
+                         La dirección es requerida
+                     </span>
+                 </div>
+             <p><br></p> 
+     
+             <!-- this creates a google map on the page with the given lat/lng from -->
+             <!-- the component as the initial center of the map: -->
+             <div class="row">
+                 <div class="col-lg-12">
+                     <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+                         <agm-marker 
+                             [latitude]="lat" 
+                             [longitude]="lng" 
+                             [markerDraggable]="true"
+                             (click)="obtenerGeorreferenciacion()"
+                             (dragEnd)="posicionFinalMarcador(m, $event)">
+                         </agm-marker>
+                     </agm-map>
+                 </div> 
+             </div>
+             <p><br></p> 
+             <button (click)="obtenerGeorreferenciacion()" class="btn btn-ttc" >
+                 Obtener Localización de ZIPP 
+             </button> 
+
+        
+        <p><br></p>
+
+
+
+        <!-- Campo para el valor de la zona zipp -->
+
+        <label>Servicios adicionales</label>
+        <div class="row">
+
+            <div class="col-lg-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input type="checkbox" id="cctv" #cctv="ngModel" [(ngModel)]="zonazipp.cctv" [ngModelOptions]="{standalone: true}" value="0" onclick="actualizarValor(this.checked, this.value);" aria-label="..." class="pointer-check">
+                    </span>
+                    <input type="text" class="form-control input-underline-zipp pointer" aria-label="..." value="CCTV" disabled>   
+                    <span class="input-group-addon">
+                        <i class="fa fa-video-camera" aria-hidden="true"></i>
+                    </span>
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+
+            <div class="col-lg-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input type="checkbox" id="electric_station" #phone="ngModel" [(ngModel)]="zonazipp.electric_station" [ngModelOptions]="{standalone: true}" value="0" onclick="actualizarValor(this.checked, this.value);" aria-label="..." class="pointer-check">
+                    </span>
+                    <input type="text" class="form-control input-underline-zipp pointer" aria-label="..." value="Carga Electrica" disabled>   
+                     <span class="input-group-addon">
+                        <i class="fa fa-plug" aria-hidden="true"></i>
+                    </span>
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+
+            <br>
+            <br>
+
+            <div class="col-lg-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input type="checkbox" id="roofed" #roofed="ngModel" [(ngModel)]="zonazipp.roofed" [ngModelOptions]="{standalone: true}" value="0" onclick="actualizarValor(this.checked, this.value);" aria-label="..." class="pointer-check">
+                    </span>
+                    <input type="text" class="form-control input-underline-zipp pointer" aria-label="..." value="Es Techado" disabled>   
+                    <span class="input-group-addon">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                    </span>
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+
+            <div class="col-lg-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input type="checkbox" id="security_guard" #security_guard="ngModel" [(ngModel)]="zonazipp.security_guard" [ngModelOptions]="{standalone: true}" value="0" onclick="actualizarValor(this.checked, this.value);" aria-label="..." class="pointer-check">
+                    </span>
+                    <input type="text" class="form-control input-underline-zipp pointer" aria-label="..." value="Seguridad Privada" disabled>                       
+                    <span class="input-group-addon">
+                        <i class="fa fa-user-secret" aria-hidden="true"></i>
+                    </span>
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+
+        <br>
+        <label>Tipo de vehículo</label>
+
+        <div>
+            <select class="input-sm form-control input-underline-zipp" name="tipoZona" id="tipoZna" #tipoZona="ngModel" [(ngModel)]="tipo" required >
+                <option>Automovil</option>
+                <option>Motocicleta</option>
+                <option>Bicicleta/Patineta</option>
+            </select>
+        </div>
+        <br>
+        <label>Tamaño de vehículo</label>
+            <div class="row">
+                
+                <div class="col-lg-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                
+                            <input id="big_type" type="checkbox" aria-label="..." class="pointer-check" #big_type ="ngModel" [(ngModel)]="zonazipp.big_type" [ngModelOptions]="{standalone: true}" value="Grande">
+                        </span>
+                        <input type="text" class="form-control input-underline-zipp pointer" aria-label="..." value="Grande" disabled>
+                        <span class="input-group-addon">
+                            <i class="fa fa-truck" aria-hidden="true"></i>
+                        </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+
+                <div class="col-lg-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <input id="medium_type" type="checkbox" aria-label="..." class="pointer-check" #medium_type ="ngModel" [(ngModel)]="zonazipp.medium_type" [ngModelOptions]="{standalone: true}" value="Mediano">
+                        </span>
+                        <input type="text" class="form-control input-underline-zipp pointer" aria-label="..." value="Mediano" disabled>                    
+                        <span class="input-group-addon">
+                            <i class="fa fa-bus" aria-hidden="true"></i>
+                        </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+            
+                <div class="col-lg-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <input id="small_type" type="checkbox" aria-label="..." class="pointer-check" #small_type ="ngModel" [(ngModel)]="zonazipp.small_type" [ngModelOptions]="{standalone: true}" value="Pequeño">
+                        </span>
+                        <input type="text" class="form-control input-underline-zipp pointer" aria-label="..." value="Pequeño" disabled>                    
+                        <span class="input-group-addon">
+                            <i class="fa fa-car" aria-hidden="true"></i>
+                        </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+        <br>
+
+        <label>Horario disponible semanal</label>
+        <div>
+            <select class="input-sm form-control input-underline-zipp" id="horary" name="horary" #horary="ngModel" [(ngModel)]="zonazipp.horary" required>
+                <option>(24/7) 24 horas al día, 7 días a la semana</option>
+                <option>(Día) 05:00 am hasta 06:00 pm</option>
+                <option>(Noche) 06:00 pm hasta 04:00 am</option>
+                <option>(Oficina) 07:00 am hasta 12:00 m Y 02:00 pm hasta 06:00 pm</option>
+            </select>
+        </div>
+        <span *ngIf="!horary.valid && horary.touched">
+            El horario es requerido
+        </span>
+        <br>
+        <div>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th> Foto zona ZIPP</th>
+                        <th> </th>
+                      </tr>
+                    </thead>
+                    
+                    <label class="btn btn-default btn-file">
+                        Adjuntar
+                        <input type="file" (change)="fileChangeEvent($event)"/>
+                    </label>
+    
+                    <thead>
+                        <tr>
+                          <th>Foto factura de servicio público</th>
+                          <th> </th>
+                        </tr>
+                    </thead>
+                    <label class="btn btn-default btn-file">
+                        Adjuntar
+                        <input type="file" (change)="fileChangeEventBill($event)"/>
+                    </label>
+    
+                  </table>
+        </div>     
+        <div>
+            <label>Descripción </label>
+            <textarea name="description" #description="ngModel" [(ngModel)]="zonazipp.description" class="form-control textarea-underline" placeholder="Describe de manera detallada la manera como un usuario conductor, puede llegar a tu ZIPP" required></textarea>
+            <span *ngIf="!description.valid && description.touched">
+                La descripción es requerida
+            </span>
+        </div>
+        <br>
+        <div>
+            <button (click)="editZonaZipp()" class="btn btn-ttc">
+                {{title}}
+            </button >
+        </div>
+        <div>
+            <hr>
+            <p class="intro">
+                Al presionar {{title}}, aceptas las 
+                <a href="https://tinyurl.com/zonaszipp">condiciones de uso</a>
+            </p>
+            <br>
+        </div>
+    </form>
+    <p><br></p> 
+    <p><br></p> 
+</div>
+
+
+

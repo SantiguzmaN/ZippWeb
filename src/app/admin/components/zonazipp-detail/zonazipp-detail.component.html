@@ -1,0 +1,19 @@
+
+<div class="zonazipp-box col-lg-11" *ngIf='zonazipp'>
+    <div id="zonazipp-head-card" class="col-lg-4 pull-left">
+        <img src="{{zonazipp.image_zona_zipp}}" style="width:370px" />
+    </div>
+    <div class="zonazipp-data" class="col-lg-7 pull-left">
+        <h1>{{zonazipp.city}}</h1>
+        <p><strong>Nombre:&nbsp;</strong>{{zonazipp.user.name}}</p>
+        <p><strong>Dirección:&nbsp;</strong>{{zonazipp.address}}</p>
+        <p><strong>Número de espacios:&nbsp;</strong>{{zonazipp.number_spaces}}</p>
+        <p><strong>Valor:&nbsp;</strong>{{'$' + ' ' + zonazipp.price}}</p>
+        <p><strong>Horario:&nbsp;</strong>{{zonazipp.horary}}</p>
+        <p><strong>Descripción de arribo:&nbsp;</strong>{{zonazipp.description}}</p>
+    </div>
+</div>
+<br>
+<br>
+
+

@@ -1,0 +1,111 @@
+<div class="header-tittle">
+		<h1>{{tittle}}</h1>
+</div>
+<div class="container" [@routerTransition]>
+	<div class="alert alert-success" *ngIf="status == 'success'">
+		¡Has actualizado tu información correctamente!
+	</div>
+
+	<div class="alert alert-danger" *ngIf="status == 'error'">
+		No se ha logrado actualizar tus datos
+	</div>
+
+	<form #userEditForm="ngForm" (ngSubmit)="onSubmit()">
+		<div class="form-row">
+		    <div class="form-group col-md-6">
+		    	<label>Cedula: </label>
+		    	<div class="input-group">
+		    		<span class="input-group-addon" id="sizing-addon1">
+						<i class="fa fa-address-card"></i>
+					</span>
+					<input type="text" name="cedula" #cedula="ngModel" [(ngModel)]="user.cedula" class="form-control input-underline" required readonly />
+					<span *ngIf="!cedula.valid && cedula.touched" class="label label-danger">Este campo es obligatorio</span>
+				</div>
+		    </div>
+		    <div class="form-group col-md-6">
+		      	<label>Nombre Completo: </label>
+		      	<div class="input-group">
+		      		<span class="input-group-addon" id="sizing-addon1">
+						<i class="fa fa-user-circle"></i>
+					</span>
+					<input type="text" name="name" #name="ngModel" [(ngModel)]="user.name" class="form-control input-underline" required />
+					<span *ngIf="!name.valid && name.touched" class="label label-danger">El nombre es obligatorio</span>
+				</div>
+		    </div>
+		</div>
+
+		<div class="form-row">
+		 	<div class="form-group col-md-6">
+				<label>Correo Electrónico: </label>
+				<div class="input-group">
+					<span class="input-group-addon" id="sizing-addon1">
+						<i class="fa fa-envelope"></i>
+					</span>
+					<input type="email" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control input-underline" required />
+					<span *ngIf="!email.valid && email.touched" class="label label-danger">El correo electrónico es obligatorio</span>	
+				</div>
+			</div>	
+			
+
+			<div class="form-group col-md-6">
+				<label>Celular: </label>
+				<div class="input-group">
+					<span class="input-group-addon" id="sizing-addon1">
+						<img class="icon-colombia" src="assets/images/colombia-icon.png" />
+                        +57
+					</span>
+					<input type="text" name="celular" #celular="ngModel" [(ngModel)]="user.celular" class="form-control input-underline" aria-describedby="sizing-addon1" maxlength="10" onkeypress="return justNumbers(event);" required />
+					<span *ngIf="!celular.valid && celular.touched" class="label label-danger">Este campo es obligatorio</span>
+				</div>
+			</div>	 
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-6">
+			   <label>Numero de Cuenta: </label>
+			   <div class="input-group">
+				   <span class="input-group-addon" id="sizing-addon1">
+					   <i class="fa fa-card"></i>
+				   </span>
+				   <input type="text" name="numcuenta" #numcuenta="ngModel" [(ngModel)]="user.numcuenta" class="form-control input-underline" required />
+				   <span *ngIf="!numcuenta.valid && numcuenta.touched" class="label label-danger">El numero de cuenta es obligatorio</span>	
+			   </div>
+		   </div>	
+		   
+
+		   <div class="form-group col-md-6">
+			   <label>Banco al cual pertenece su Centa </label>
+			   <div class="input-group">
+				   <span class="input-group-addon" id="sizing-addon1">
+					<i class="fa fa-card"></i>
+				   </span>
+				   <select style="width: 280px; height: 30px;" name="banco" id="banco" #banco="ngModel" [(ngModel)]="user.banco" required >
+					<option>Davivienda</option>
+					<option>Daviplata</option>
+					
+				</select>				   
+			   </div>
+		   </div>	 
+	   </div>
+
+		 <!-- <div class="form-row">
+		    <div class="form-group col-md-1">
+		    	<div class="image_for_edit" *ngIf="user.image && user.image != 'null'">
+					<img src="{{ url + 'get-image-file/' + user.image}}" />			
+				</div>	
+		    </div>
+
+		  <div class="form-group col-md-10">
+		      	<label>Sube tu imagen de perfil: </label>
+				<input type="file" placeholder="Subir imagen" (change)="fileChangeEvent($event)" />
+		    </div>
+		</div>	
+		-->
+		<div class="form-row">
+			<div class="col-md-12">
+				<input type="submit" value="Actualizar datos" class="btn rounded-btn" [disabled]="!userEditForm.form.valid" />
+			</div>
+		</div>
+	</form>
+	<p><br></p>
+	<p><br></p>
+</div>

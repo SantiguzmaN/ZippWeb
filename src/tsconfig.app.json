@@ -1,0 +1,20 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "baseUrl": "./",
+    "module": "es2015",
+    "types": []
+  },
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts"
+  ],
+  "rules": {
+    "max-len": ["error", { "code": 140 }],
+    "quotes": [2, "single", { "avoidEscape": true }],
+    "semi": "error",
+    "indent": [2, 2],
+    "eol-last": ["error", "always"]
+  }
+}

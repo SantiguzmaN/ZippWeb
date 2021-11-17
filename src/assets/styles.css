@@ -1,0 +1,81 @@
+body { padding-top: 60px; }
+
+.pointer{
+	cursor: pointer;
+}
+
+.icon-colombia {
+    width: 20px;
+    height: 20px;
+    margin-top: -4px;
+}
+
+.navigation.col-lg-12 {
+	margin-top: 10px;
+}
+
+.jumbotron {
+	padding: 40px;
+	border-radius: 5px;
+	box-shadow: 2px 2px 1px #ccc;
+}
+
+.navbar-nav .active {
+	border-bottom: 4px solid #95ae00 !important;
+}
+
+.navbar-default .navbar-nav>li>a {
+	border-bottom: 4px solid transparent;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+	border-bottom: 4px solid #95ae00;
+}
+
+.image_for_edit img{
+	width: 60px;
+}
+
+.avatar{
+	width: 26px;
+	height: 36px;
+	border-radius: 700px;
+	overflow: hidden;
+	margin-top: 9px;
+	margin-right: 5px;
+}
+
+.avatar img{
+	height: 35px;
+}
+
+.logo-dash{
+	width: 40px;
+	margin-top: -8px;
+	margin-left: -10px;
+}
+
+.decor {
+  background: #95ae00;
+  background-size: 50px 25%;;
+  padding: 2px;
+  display: block;
+}
+
+.loader {
+	position: absolute;
+	left: 45%;
+	right: 50%;
+	margin-top: 250px;
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #95ae00; /* Blue */
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

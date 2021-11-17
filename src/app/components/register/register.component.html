@@ -1,0 +1,125 @@
+<div class="begin-page" [@routerTransition]>
+    <section class="beginPadre">
+      <div class="form-content" align="center">
+        <div style="height: 150px; width: 120px;">
+          <img class="logo-zipp2" src="assets/images/logo-zipp2.png" alt="..."> 
+        </div>
+	      <div style="width: 100%;">
+          <h3>REGISTRO</h3>
+            <p>Parece que es la primera vez que ingresas a ZIPP, si aún</p>
+            <p>no tienes una cuenta REGISTRATE!</p>
+        </div>
+        
+        <div class="alert alert-success" *ngIf="status == 'success'">
+            <i class="fa fa-check-circle"></i> Registro completado correctamente, <a [routerLink]="['/login']">identificate aquí</a> 
+          </div>
+    
+          <div class="alert alert-danger" *ngIf="status == 'error'">
+            <i class="fa fa-times-circle"></i> No te has registrado correctamente
+          </div>
+    
+    
+                <form #formUserZipp="ngForm" (ngSubmit)="onSubmit(); formUserZipp.reset();">
+    
+                    <div class="form-content">
+    
+                        <div class="form-group">
+                          <input type="text" class="form-control input-underline input-lg" style="width: 280px;" name="cedula" #cedula="ngModel" [(ngModel)]="user.cedula" maxlength="10"     onkeypress="return justNumbers(event);"  placeholder="Documento de identidad" required />
+                            
+                            <span *ngIf="!cedula.valid && cedula.touched" class="label label-danger">Este campo es obligatorio</span>
+                        </div>
+    
+                        <div class="form-group">
+                          <input type="text" class="form-control input-underline input-lg" style="width: 280px;"  name="name" 
+                              #name="ngModel" [(ngModel)]="user.name" 
+                              placeholder="Nombre completo" required />
+                            
+                            <span *ngIf="!name.valid && name.touched" class="label label-danger">Este campo es obligatorio</span>
+                        </div>
+    
+                        <div class="form-group"> 
+                          <input type="email" class="form-control input-underline input-lg" style="width: 280px;"  name="email" #email="ngModel" [(ngModel)]="user.email" placeholder="Correo Electrónico" required />
+                            
+                            <span *ngIf="!email.valid && email.touched" class="label label-danger">Ingrese un Correo Electrónico valido</span>
+                            <!-- <div ng-show="forma.email.$dirty && forma.email.$invalid">
+                                <p class="help-block text-danger" ng-show="form.email.$error.required">Campo requerido</p>
+                                <p class="help-block text-danger" ng-show="form.email.$error.email">Email incorrecto</p>
+                            </div> -->
+                        </div>
+    
+    
+                        <div class="form-group input-group">
+                            
+                            <input type="text" class="form-control input-underline input-lg" style="width: 280px;"  name="celular" 
+                              #celular="ngModel" [(ngModel)]="user.celular" 
+                              maxlength="10" onkeypress="return justNumbers(event);"
+                              placeholder="Número Celular" required>
+                              
+                            <span *ngIf="!celular.valid && celular.touched" class="label label-danger">Este campo es obligatorio</span>
+                        </div>
+    
+                        <div class="form-group">
+                            
+                          <input type="password" class="form-control input-underline input-lg" style="width: 280px;"  name="password" 
+                            #password="ngModel" [(ngModel)]="user.password" 
+                            placeholder="Contraseña" required />
+                            
+                            <span *ngIf="!password.valid && password.touched" class="label label-danger">Este campo es obligatorio</span>
+                        </div>
+    
+                    </div>
+                    <br>
+                    <p class="divider"></p>
+                    <input class="btn rounded-btn" type="button" (click)="validarData()" value="Crear cuenta" [disabled]="!formUserZipp.form.valid" /> 
+    
+                    <br>
+                    <br>
+    
+                    <div class="cuentas">
+                        Al presionar "Crear cuenta" acepto las <a href="https://tinyurl.com/zonaszipp" style="color: red">condiciones de uso</a>
+                    </div>
+                    <!-- <input type="button" class="btn rounded-btn" [routerLink]="['/login']" value="Tengo una cuenta" /> -->
+          
+                    <!-- <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://app.mailjet.com/widget/iframe/2AwY/4gH" width="100%" height="398"></iframe> -->
+                </form>
+     </div>
+    </section>
+
+    <section style="width: 100%; align-content: center; background-color: #95ae00">
+        <a href="https://www.facebook.com/zippoficial">
+          <img  src="assets/images/fb.png" 
+                style="height: 50px;
+                       padding-left: 10px;
+                       padding-right: 10px"> 
+        </a>
+        <a href="https://www.instagram.com/zippoficial">
+          <img  src="assets/images/instagram.png" 
+                style="height: 50px;
+                       padding-left: 10px;
+                       padding-right: 10px" >
+        </a>
+        <a href="tel:+573052902853">
+          <img  src="assets/images/wzp.png" 
+                style="height: 50px;
+                       padding-left: 10px;
+                       padding-right: 10px">
+        </a>
+    </section> 
+ 
+  <section style="width: 100%; align-content: center; background-color: white">
+    <img src="assets/images/fonemp.png" 
+         style="height: 40px"> 
+    <img src="assets/images/finade.png" 
+         style="height: 40px" >
+      
+    <img src="assets/images/sena.png" 
+         style="height: 40px">
+    <img src="assets/images/colombia.png" 
+         style="height: 40px">   
+  </section>  
+    
+        
+    
+  
+</div>
+

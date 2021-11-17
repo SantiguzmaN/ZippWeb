@@ -1,0 +1,91 @@
+.form-control {
+    background-color: #95ae00;
+    color: white;
+    
+}
+
+.input-underline-zipp {
+    background: 0 0;
+    box-shadow: none;
+    border: 1px solid #95ae00;
+    color: #6b7275;
+    border-radius: 0;
+    background-color: #fff;
+}
+
+.input-underline-zipp:focus {
+    border: 2px solid #95ae00;
+    box-shadow: none;
+    color: #303030;
+}
+
+.input-group .form-control {
+    position: static;
+    z-index: 2;
+    float: left;
+    width: 100%;
+    margin-bottom: 0;    
+}
+
+.btn-ttc {
+    color: #eeeeee;
+    background-color: #95ae00 !important;
+}
+
+.pointer{
+    cursor: default;
+}
+
+.pointer-check{
+    cursor: pointer;
+}
+
+.textarea-underline {
+    background: 0 0;
+    box-shadow: none;
+    border: 1px solid #95ae00;
+    color: #6b7275;
+    border-radius: 0;
+    background-color: #fff;
+}
+
+.textarea-underline:focus {
+    border: 2px solid #afcc00;
+    box-shadow: none;
+    color: #303030;
+}
+
+
+a {
+    color: #95ae00;
+    text-decoration: none;
+}
+
+.btn-default {
+    color: #fff;
+    background-color: #95ae00;
+    border-color: #95ae00;
+}
+
+.zonazipp_image img{
+    width: 60px;
+}
+
+.image_bill img{
+    width: 60px;
+}
+
+agm-map {
+    height: 230px;
+}
+/*
+.input-group-addon {
+    background-color: #95ae00;
+    color: white;
+}
+*/
+/* Always set the map height explicitly to define the size of the div
+* element that contains the map. 
+#map {
+    height: 100%;
+}*/

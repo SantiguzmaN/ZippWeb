@@ -1,0 +1,52 @@
+.header-tittle {
+	background-color: #95ae00;
+	color: white;
+	text-align: center;
+	padding: 5px 0 5px;
+	margin-top: -20px;
+	margin-bottom: 56px;
+	font-weight: bold;
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
+.input-underline {
+    background: 0 0;
+    box-shadow: none;
+    border: 1px solid #95ae00;
+    color: #000;
+    border-radius: 0px;
+}
+
+.input-underline:focus {
+    border: 2px solid #95ae00;
+    box-shadow: none;
+}
+
+.rounded-btn{
+    -webkit-border-radius: px;
+            border-radius: 0px;
+    color: #fff;
+    background: #95ae00;
+    border: 1px solid rgba(255,255,255,0.8);
+    font-size: 18px;
+    line-height: 40px;
+    padding: 0 25px;
+    margin-top: 10px;
+}
+
+.rounded-btn:hover,.rounded-btn:focus,.rounded-btn:active,.rounded-btn:visited{
+    color: rgba(255,255,255,1);
+    border: 2px solid rgba(255,255,255,1);
+    outline: none;
+}
+
+.alert{
+    text-align: center;
+}
+
+.input-group-addon {
+    background-color: #eeeeee;
+    color: #555555;
+
+}

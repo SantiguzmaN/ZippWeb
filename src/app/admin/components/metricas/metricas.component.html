@@ -1,0 +1,212 @@
+ 
+<div class="row-lg-12">
+    <div class="alert alert-success" *ngIf="upload == true">
+        <i class="fa fa-check-circle"></i> Se Completo la carga del archivo... Verifica nuevamente las metricas
+
+    </div>
+    <div class="alert alert-danger" *ngIf="upload == 'false'">
+        <i class="fa fa-times-circle"></i> No te has registrado correctamente
+      </div>
+	<div class="header-tittle">
+        <h1 align="center">{{tittle}} </h1>
+        
+        <div align="end">
+                <input 
+                    type="button" 
+                    value="Cerrar Sesion" 
+                    class="btn rounded-btn" 
+                    style="width: 100px;
+                           height: 35px;
+                           padding-top:0px; 
+                           font-size: 12px;
+                           margin-right: 40px;"
+                    (click)="logout()"/>
+            </div> 
+    </div>
+    
+
+    <table class="table table-hover" >
+        <tbody>
+            <tr align="center">
+                <td><input type="button" 
+                    value="Usuarios ZIPP Movil" 
+                    class="btn rounded-btn" 
+                    style="width: 160px"
+                    (click)="btnUsMov()"
+                /></td>
+                <td><input type="button" 
+                    value="Usuarios ZIPP Web" 
+                    class="btn rounded-btn"
+                    style="width: 160px"
+                    (click)="btnUsWeb()" 
+                /></td>
+                <td><input type="button" 
+                    value="Zonas ZIPP" 
+                    class="btn rounded-btn" 
+                    style="width: 160px"
+                    (click)="btnZonas()"
+                /></td>
+                <td><input type="button" 
+                    value="Total Reservas" 
+                    class="btn rounded-btn" 
+                    style="width: 160px"
+                    (click)="btnRes()"
+                /></td>
+                <td><input type="button" 
+                    value="Horas Tomadas" 
+                    class="btn rounded-btn" 
+                    style="width: 160px"
+                /></td>
+                <td><input type="button" 
+                    value="Adicionar Codigos" 
+                    class="btn rounded-btn" 
+                    style="width: 160px"
+                /></td>
+            </tr>
+            <tr align="center">
+                <td><input type="button" 
+                    value="{{cantUsers}}" 
+                    class="btn rounded-btn" 
+                    style="width: 80px; height: 35px;padding-top:0px;font-size: 16px;"
+                /></td>
+                <td><input type="button" 
+                    value="{{cantUsersW}}" 
+                    class="btn rounded-btn"
+                    style="width: 80px; height: 35px;padding-top:0px;font-size: 16px;"
+                /></td>
+                <td><input type="button" 
+                    value={{cantZonas}} 
+                    class="btn rounded-btn" 
+                    style="width: 80px; height: 35px;padding-top:0px;font-size: 16px;"
+                /></td>
+                <td><input type="button" 
+                    value="{{cantRes}}" 
+                    class="btn rounded-btn" 
+                    style="width: 80px; height: 35px;padding-top:0px;font-size: 16px;"
+                /></td>
+                <td><input type="button" 
+                    value="{{cantHoras}}" 
+                    class="btn rounded-btn" 
+                    style="width: 80px; height: 35px;padding-top:0px;font-size: 16px;"
+                /></td>
+                <td><input type="file" 
+                    (change)="fileChangeEvent($event)" 
+                    class="btn rounded-btn" 
+                    style="width: 160px; height: 35px;padding-top:0px;font-size: 16px;"
+                /></td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+    <table *ngIf="tabZonas==true" class="table table-hover" style="margin-left: 15px;margin-bottom: 50px; width: 100%">
+        <thead class="thead-default">
+            <tr>
+                <th>FECHA CREACION</th>
+                <th>CIUDAD</th>
+                <th>DIRECCION</th>
+                <th>HORARIO</th>
+                <th>PROVEDOR</th>
+                <th>DOCUMENTO</th> 
+                <th>IMAGEN ZONA</th>
+                <th>IMAGEN FACTURA</th>                    
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let zona of zonaszipp">
+                <td>{{zona.fechaC}}</td>
+                <td>{{zona.city}}</td>
+                <td>{{zona.address}}</td>
+                <td>{{zona.horary}}</td>
+                <td>{{zona.user.name}}</td>
+                <td>{{zona.user.cedula}}</td>    
+                <td>{{zona.image_zona_zipp}}</td> 
+                <td>{{zona.image_bill}}</td>   
+                    
+            </tr>
+        </tbody>
+    </table>
+
+     <table *ngIf="tabMovil==true" class="table table-hover" style="margin-left: 15px;margin-bottom: 50px;">
+        <thead class="thead-default">
+            <tr>
+                <th>FECHA CREACION</th>
+                <th>NOMBRE</th>
+                <th>DOCUMENTO</th>
+                <th>EMAIL</th>
+                <th>CELULAR</th>
+                <th>SALDO</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.fechaC}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.cedula}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.celular}}</td>
+                <td>{{user.saldo}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table *ngIf="tabWeb==true" class="table table-hover" style="margin-left: 15px;margin-bottom: 50px;">
+            <thead class="thead-default">
+                <tr>
+                    <th>FECHA CREACION</th>
+                    <th>NOMBRE</th>
+                    <th>DOCUMENTO</th>
+                    <th>EMAIL</th>
+                    <th>CELULAR</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of usersWeb">
+                    <td>{{user.fechaC}}</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.cedula}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.celular}}</td>
+                    
+                </tr>
+            </tbody>
+        </table>
+
+    <table *ngIf="tabReservas==true" class="table table-hover" style="margin-left: 15px;margin-bottom: 50px;" >
+        <thead class="thead-default">
+            <tr>
+                <th>FECHA</th>
+                <th>TIEMPO</th>
+                <th>COSTO</th>
+                <th>DIRECCION</th>   
+                <th>PROVEEDOR</th>      
+                <th>USUARIO</th> 
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let res of reservazonas">
+                <td>{{res.fecha_final}}</td>
+                <td>{{res.tiempo_total}}</td>
+                <td>${{res.valor_total}}</td>
+                <td>{{res.zonazipp.address}}</td>
+                <td>{{res.userzonazipp.name}}</td>
+                <td>{{res.user.name}}</td>
+            </tr>
+            <tr>
+                    <td></td>
+                    <td>TOTAL:</td>
+                    <td>${{totSaldo}}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+        </tbody>
+
+    </table>
+
+
+    
+    <app-footer></app-footer>
+</div>

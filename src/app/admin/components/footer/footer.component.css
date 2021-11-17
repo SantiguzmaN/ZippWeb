@@ -1,0 +1,34 @@
+footer {
+  position: fixed;
+  bottom: 0;
+  width:100%;
+  height: 40px;
+  line-height: 45px; /* Vertically center the text there */
+  background-color: #95ae00;
+  text-align: center;
+  left: 0px;
+  display: inline-block;
+}
+
+p{
+	color: white;
+}
+
+p>a{
+  color: white;
+}
+
+
+.fa{
+  color: #fff;
+  display: inline-block;
+  font-size: 15px;
+  text-rendering: auto;
+  width: 15px;
+  height: 15px;
+}
+
+.container {
+  border-top-color: #CC0000;
+  border-top-width: 10px;
+}
